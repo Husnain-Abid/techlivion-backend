@@ -12,7 +12,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // POST route for sending email
-app.post('/send-email', async (req, res) => {
+app.post('/api/send-email', async (req, res) => {
   const { firstName, lastName, email, service, message } = req.body;
 
   try {
@@ -79,6 +79,11 @@ app.post('/send-email', async (req, res) => {
     res.status(500).json({ message: 'Failed to send email' });
   }
 });
+
+app.get('/api/', (req, res) => {
+  res.send('API is working');
+});
+
 
 // Start the server
 app.listen(PORT, () => {
